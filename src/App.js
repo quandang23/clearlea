@@ -1,45 +1,41 @@
-import React from 'react';
-import { Amplify } from 'aws-amplify';
+// import React from 'react';
+// import { Amplify } from 'aws-amplify';
 
-import { Authenticator } from '@aws-amplify/ui-react';
-import '@aws-amplify/ui-react/styles.css';
+// import { Authenticator } from '@aws-amplify/ui-react';
+// import '@aws-amplify/ui-react/styles.css';
 
-import awsExports from './aws-exports';
-Amplify.configure(awsExports);
+// import awsExports from './aws-exports';
+// Amplify.configure(awsExports);
 
-export default function App() {
-  return (
-    <Authenticator>
-      {({ signOut, user }) => (
-        <main>
-          <h1>Hello {user.username}</h1>
-          <button onClick={signOut}>Sign out</button>
-        </main>
-      )}
-    </Authenticator>
-  );
-}
-
-// function App() {
+// export default function App() {
 //   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <h1>hello there</h1>
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
+//     <Authenticator>
+//       {({ signOut, user }) => (
+//         <main>
+//           <h1>Hello {user.username}</h1>
+//           <button onClick={signOut}>Sign out</button>
+//         </main>
+//       )}
+//     </Authenticator>
 //   );
 // }
 
-// export default App;
+import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Navbar from './resources/pages//Sections/Navbar';
+import BottomNav from './resources/pages/Sections/BottomNav';
+import './App.css';
+
+function App() {
+
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Navbar />
+        <BottomNav />
+      </BrowserRouter>
+    </div>
+  );
+}
+
+export default App;
