@@ -14,6 +14,8 @@ import { useState } from "react";
 const Navbar = () => {
     // const { isLoggedIn, name, set, end, setName} = useAuth();
 
+    const {isLoggedIn, setLoggedIn} = useState("true"); 
+
     return (
         <>
             <nav className="navbar">
@@ -46,9 +48,9 @@ const Navbar = () => {
                                 <button className="dropbtn">
                                     {localStorage.getItem('name')}
                                 </button>
-                                <div className="dropdown-content">
+                                {/* <div className="dropdown-content">
                                     <a href="/" onClick={() => {end()}}>Sign Out</a>
-                                </div>
+                                </div> */}
                             </div>
                         ) : (
                             <div className="signin-elements">
