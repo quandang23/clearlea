@@ -23,10 +23,10 @@ const Signup = () => {
                 <section className='section'>
                     <div className='container'>
                         <p className='text'>Sign Up</p>
-                        <button onClick={signup} className='google' disabled={isLoggedIn}>
+                        {/* <button onClick={signup} className='google' disabled={isLoggedIn}>
                             <p className='p'>Continue with Google</p>
                             <img className="pic" alt="Google Icon" src={Google}/>
-                        </button>
+                        </button> */}
                     </div>
                 </section>
             </div>

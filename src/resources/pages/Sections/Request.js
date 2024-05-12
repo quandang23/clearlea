@@ -23,10 +23,10 @@ const Request = () => {
                 <section className='section'>
                     <div className='container'>
                         <p className='text'>Log In</p>
-                        <button onClick={login} className='google' disabled={isLoggedIn}>
+                        {/* <button onClick={login} className='google' disabled={isLoggedIn}>
                             <p className='p'>Continue with Google</p>
                             <img className="pic" alt="Google Icon" src={Google}/>
-                        </button>
+                        </button> */}
                     </div>
                 </section>
             </div>
