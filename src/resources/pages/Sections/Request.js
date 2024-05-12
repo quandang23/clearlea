@@ -1,6 +1,12 @@
 import '../../css/request.css'; 
-import Google from "../../images/google.png";
 import React, { useEffect } from 'react';
+import { Amplify } from 'aws-amplify'; 
+import { Authenticator } from '@aws-amplify/ui-react'; 
+import '@aws-amplify/ui-react/styles.css'; 
+
+import awsExports from '../../../aws-exports';
+Amplify.configure(awsExports);
+
 // import { useAuth } from '../Api/AuthContext.js';
 
 const Request = () => {
@@ -23,10 +29,14 @@ const Request = () => {
                 <section className='section'>
                     <div className='container'>
                         <p className='text'>Log In</p>
-                        {/* <button onClick={login} className='google' disabled={isLoggedIn}>
-                            <p className='p'>Continue with Google</p>
-                            <img className="pic" alt="Google Icon" src={Google}/>
-                        </button> */}
+                        <Authenticator>
+                        {({ signOut, user }) => (
+                            <main>
+                                <h1>Hello {user.username}</h1>
+                                <button onClick={signOut}>Sign out</button>
+                            </main>
+                        )}
+                        </Authenticator>
                     </div>
                 </section>
             </div>
