@@ -39,10 +39,10 @@ const Results = () => {
         // console.log("Hello"); 
         const authToken = localStorage.getItem('authToken');
         console.log(authToken); 
-        if (authToken) {
-            // Set isLoggedIn to true if token is present
-            set();
-        }
+        // if (authToken) {
+        //     // Set isLoggedIn to true if token is present
+        //     set();
+        // }
 
         // Calling API to get service providers
         setTemp(localStorage.getItem('zipcode')); 
