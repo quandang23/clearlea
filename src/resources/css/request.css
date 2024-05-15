@@ -1,5 +1,4 @@
 .request {
-    text-align: center; 
     display: flex;
     justify-content: center; 
     align-items: center; 
@@ -11,7 +10,7 @@
     position: relative;
     width: 100%;
     margin: 0 auto; 
-    height: 404px;
+    height: 604px;
 }
 
 .request .section .container {
@@ -29,6 +28,7 @@
 }
 
 .request .text {
+    text-align: center; 
     color: #000000;
     font-family: "Inter-Bold", Helvetica;
     font-size: 25px;

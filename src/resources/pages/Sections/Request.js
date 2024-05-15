@@ -28,7 +28,7 @@ const Request = () => {
             <div className='request'>
                 <section className='section'>
                     <div className='container'>
-                        <p className='text'>Log In</p>
+                        <p className='text'>Authentication</p>
                         <Authenticator>
                         {({ signOut, user }) => (
                             <main>
