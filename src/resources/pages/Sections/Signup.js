@@ -29,7 +29,9 @@ const Signup = () => {
                 <section className='section'>
                     <div className='container'>
                         <p className='text'>Authentication</p>
-                        <Authenticator>
+                        <Authenticator 
+                            initialState="signUp" 
+                        >
                         {({ signOut, user }) => (
                             <main>
                                 <h1>Hello {user.username}</h1>
