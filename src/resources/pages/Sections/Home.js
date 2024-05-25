@@ -8,6 +8,7 @@ import SecondPlow from '../../images/plow.png';
 import SecondMow from '../../images/mow.png';    
 import SecondTime from '../../images/time.png';
 import SecondChoose from '../../images/choose.png';
+import { AddressAutofill } from '@mapbox/search-js-react';
 // import Places from '../Api/places.js';
 // import { useReq } from '../Api/ReqContext.js';
 
@@ -67,6 +68,14 @@ const Home = () => {
                     <div className="form">
                         <form onSubmit={handleSubmit}>
                             {/* <Places className="address" setAddress={setAddressTemp} setZipcode={setZipcodeTemp}/> */}
+                            <form>
+                                <AddressAutofill accessToken="pk.eyJ1IjoiZGFuZ2ludGVjaCIsImEiOiJjbHQ2YnN6NmcwOXZyMmpvZTYzYmV4MTFjIn0._XT-Ibtb6mL0fODKXsfgNw">
+                                    <input
+                                        name="address" placeholder="Address" type="text"
+                                        autoComplete="address-line1"
+                                    />
+                                </AddressAutofill>
+                            </form>
                             <button
                                 type="button" 
                                 className="mow"
