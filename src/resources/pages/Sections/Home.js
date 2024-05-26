@@ -20,7 +20,9 @@ const Home = () => {
     // Keep track of the address and service selected
     const [addressTemp, setAddressTemp] = useState(""); 
     const [serviceTemp, setServiceTemp] = useState("mow");
-    const [zipcodeTemp, setZipcodeTemp] = useState(""); 
+    // const [zipcodeTemp, setZipcodeTemp] = useState(""); 
+
+    const [address, setAddress] = useState(""); 
 
     useEffect(() => {
         // const authToken = localStorage.getItem('authToken');
@@ -37,9 +39,8 @@ const Home = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("Service selected:", serviceTemp);
-        console.log("Address:", addressTemp);
-        console.log("Zipcode:", zipcodeTemp); 
+        console.log("hello there"); 
+        console.log(address); 
         
         // Navigate to login if not loggedIn
         // if (!isLoggedIn) {
@@ -65,21 +66,23 @@ const Home = () => {
                     <div className="text">
                         <p>Find Help To Mow or Plow</p>
                     </div>
-                    <div className="form">
+                    <div className="form1">
                         <form onSubmit={handleSubmit}>
-                            {/* <Places className="address" setAddress={setAddressTemp} setZipcode={setZipcodeTemp}/> */}
-                            <form>
-                                <AddressAutofill accessToken="pk.eyJ1IjoiZGFuZ2ludGVjaCIsImEiOiJjbHQ2YnN6NmcwOXZyMmpvZTYzYmV4MTFjIn0._XT-Ibtb6mL0fODKXsfgNw">
-                                    <input
-                                        name="address" placeholder="Address" type="text"
-                                        autoComplete="address-line1"
-                                    />
-                                </AddressAutofill>
-                            </form>
+                            <AddressAutofill accessToken="pk.eyJ1IjoiZGFuZ2ludGVjaCIsImEiOiJjbHQ2YnN6NmcwOXZyMmpvZTYzYmV4MTFjIn0._XT-Ibtb6mL0fODKXsfgNw">
+                                <input
+                                    name="address" 
+                                    placeholder="Address" 
+                                    type="text"
+                                    autoComplete="address-line1"
+                                    value={address}
+                                    onChange={(e) => setAddress(e.target.value)}
+                                    className='address'
+                                />
+                            </AddressAutofill>
                             <button
                                 type="button" 
                                 className="mow"
-                                // onClick={() => setServiceTemp("mow")} 
+                                onClick={() => setServiceTemp("mow")} 
                                 style={{ 
                                     backgroundColor: serviceTemp === 'mow' ? '#196706' : 'white', 
                                     color: serviceTemp === 'mow' ? 'white' : 'black'
@@ -90,7 +93,7 @@ const Home = () => {
                             <button
                                 type="button" 
                                 className="plow"
-                                // onClick={ () => setServiceTemp("plow")}
+                                onClick={ () => setServiceTemp("plow")}
                                 style={{ 
                                     backgroundColor: serviceTemp === 'plow' ? '#196706' : 'white', 
                                     color: serviceTemp === 'plow' ? 'white' : 'black'
@@ -98,7 +101,7 @@ const Home = () => {
                             >   
                                 Plow
                             </button>
-                            <input type="submit" className={`prices ${addressTemp === "" ? 'disabled-button' : ''}`} value="See prices"/>
+                            <input type="submit" className={`prices ${address === "" ? 'disabled-button' : ''}`} value="See prices"/>
                         </form>
                     </div>
                     <div>

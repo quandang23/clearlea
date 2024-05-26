@@ -59,19 +59,19 @@
     border: 2px solid;
 }
 
-.first .form .mow {
+.first .form1 .mow {
     left: 91px;
     position: absolute;
     top: 280px;
 }
     
-.first .form .plow {
+.first .form1 .plow {
     left: 226px;
     position: absolute;
     top: 280px;
 }
 
-.first .form .prices {
+.first .form1 .prices {
     left: 91px;
     position: absolute;
     top: 350px;
@@ -86,7 +86,7 @@
     border: 2px solid;
 }
 
-.first .form .address {
+.first .form1 .address {
     left: 91px;
     position: absolute;
     top: 200px;
