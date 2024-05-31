@@ -71,7 +71,7 @@ const Home = () => {
                             <AddressAutofill accessToken="pk.eyJ1IjoiZGFuZ2ludGVjaCIsImEiOiJjbHQ2YnN6NmcwOXZyMmpvZTYzYmV4MTFjIn0._XT-Ibtb6mL0fODKXsfgNw">
                                 <input
                                     name="address" 
-                                    placeholder="Address" 
+                                    placeholder="Enter Address" 
                                     type="text"
                                     autoComplete="address-line1"
                                     value={address}

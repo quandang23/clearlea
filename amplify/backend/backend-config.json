@@ -1,6 +1,6 @@
 {
   "auth": {
-    "clearlea4f401727": {
+    "clearlea98aed77b": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
@@ -13,7 +13,8 @@
           "passwordPolicyMinLength": 8
         },
         "signupAttributes": [
-          "EMAIL"
+          "EMAIL",
+          "NAME"
         ],
         "socialProviders": [],
         "usernameAttributes": [

@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "clearlea4f401727_identitypool_4f401727",
+    "identityPoolName": "clearlea98aed77b_identitypool_98aed77b",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "clearl4f401727",
-    "userPoolName": "clearlea4f401727_userpool_4f401727",
+    "resourceNameTruncated": "clearl98aed77b",
+    "userPoolName": "clearlea98aed77b_userpool_98aed77b",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -20,7 +20,8 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-      "email"
+      "email",
+      "name"
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
@@ -31,15 +32,16 @@
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "clearl4f401727_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "clearl98aed77b_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "4f401727",
-    "resourceName": "clearlea4f401727",
+    "sharedId": "98aed77b",
+    "resourceName": "clearlea98aed77b",
     "authSelections": "identityPoolAndUserPool",
     "useDefault": "default",
     "usernameAttributes": [
       "email"
     ],
+    "triggers": {},
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
