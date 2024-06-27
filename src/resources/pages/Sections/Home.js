@@ -9,32 +9,23 @@ import SecondMow from '../../images/mow.png';
 import SecondTime from '../../images/time.png';
 import SecondChoose from '../../images/choose.png';
 import { AddressAutofill } from '@mapbox/search-js-react';
-// import Places from '../Api/places.js';
-// import { useReq } from '../Api/ReqContext.js';
+import { useAuth } from '../Api/AuthContext';
 
 const Home = () => {
 
-    // const { isLoggedIn, token, name, login, set, end } = useAuth();
+    const { name, set, end } = useAuth();
     // const { updateAddress, updateService, updateZipcode, address, service, zipcode } = useReq(); 
 
     // Keep track of the address and service selected
-    const [addressTemp, setAddressTemp] = useState(""); 
     const [serviceTemp, setServiceTemp] = useState("mow");
     // const [zipcodeTemp, setZipcodeTemp] = useState(""); 
-
     const [address, setAddress] = useState(""); 
 
     useEffect(() => {
-        // const authToken = localStorage.getItem('authToken');
-        // console.log(authToken)
-        // if (authToken) {
-        //     // Set isLoggedIn to true if token is present
-        //     set();
-        // }
-        console.log("hello"); 
-        // if (window.location.pathname == "/"){
-        //     localStorage.removeItem('zipcode'); 
-        // }
+        const temp = localStorage.getItem('name'); 
+        if (temp) {
+            set(); 
+        }
     }, []);
 
     const handleSubmit = (event) => {

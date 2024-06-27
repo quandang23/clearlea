@@ -1,20 +1,18 @@
 import '../../css/provider.css';
 import React, { useEffect } from 'react';
 import Mower from '../../images/lawn2.jpeg';
+import { useAuth } from '../Api/AuthContext';
 
 const Provider = () => {
 
-    // variable to keep track of log in state 
-    // const {isLoggedIn, token, name, signup, login, set, end} = useAuth();
+    const { name, set, end } = useAuth();
 
-    // useEffect(() => {
-    //     const authToken = localStorage.getItem('authToken');
-    //     console.log(authToken); 
-    //     if (authToken) {
-    //         // Set isLoggedIn to true if token is present
-    //         set();
-    //     }
-    // }, []);
+    useEffect(() => {
+        const temp = localStorage.getItem('name'); 
+        if (temp) {
+            set(); 
+        }
+    }, []);
 
     return (
         <div>

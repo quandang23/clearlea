@@ -7,21 +7,18 @@ import '@aws-amplify/ui-react/styles.css';
 import awsExports from '../../../aws-exports';
 Amplify.configure(awsExports);
 
-// import { useAuth } from '../Api/AuthContext.js';
+import { useAuth } from '../Api/AuthContext.js';
 
 const Signup = () => {
 
-    // variable to keep track of log in state 
-    // const {isLoggedIn, token, name, login, set, end} = useAuth();
+    const { name, set, end } = useAuth();
 
-    // useEffect(() => {
-    //     const authToken = localStorage.getItem('authToken');
-    //     console.log(authToken); 
-    //     if (authToken) {
-    //         // Set isLoggedIn to true if token is present
-    //         set();
-    //     }
-    // }, []);
+    useEffect(() => {
+        const temp = localStorage.getItem('name'); 
+        if (temp) {
+            set(); 
+        }
+    }, []);
 
     return (
         <div>
@@ -29,15 +26,13 @@ const Signup = () => {
                 <section className='section'>
                     <div className='container'>
                         <p className='text'>Authentication</p>
-                        <Authenticator 
-                            initialState="signUp" 
-                        >
-                        {({ signOut, user }) => (
-                            <main>
-                                <h1>Hello {user.username}</h1>
-                                <button onClick={signOut}>Sign out</button>
-                            </main>
-                        )}
+                        <Authenticator>
+                            {({ signOut, user }) => {
+                                <main>
+                                    <h1>Hello {user.username}</h1>
+                                    <button onClick={signOut}>Sign out</button>
+                                </main>
+                            }}
                         </Authenticator>
                     </div>
                 </section>

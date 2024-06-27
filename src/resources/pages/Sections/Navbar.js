@@ -9,12 +9,10 @@ import Signup from "./Signup.js";
 import NoPage from "./404.js";
 import Careers from "./Careers"
 import Results from "./Results"
-import { useState } from "react";
+import { useAuth } from "../Api/AuthContext.js";
 
 const Navbar = () => {
-    // const { isLoggedIn, name, set, end, setName} = useAuth();
-
-    const {isLoggedIn, setLoggedIn} = useState("true"); 
+    const { isLoggedIn, end } = useAuth();
 
     return (
         <>
@@ -48,9 +46,9 @@ const Navbar = () => {
                                 <button className="dropbtn">
                                     {localStorage.getItem('name')}
                                 </button>
-                                {/* <div className="dropdown-content">
+                                <div className="dropdown-content">
                                     <a href="/" onClick={() => {end()}}>Sign Out</a>
-                                </div> */}
+                                </div>
                             </div>
                         ) : (
                             <div className="signin-elements">

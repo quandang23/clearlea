@@ -1,164 +1,59 @@
-// import React, { createContext, useState, useContext, useEffect } from 'react';
-// import { googleLogout, useGoogleLogin } from '@react-oauth/google';
-// import axios from 'axios';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 
-// const AuthContext = createContext();
+const AuthContext = createContext();
 
-// export const AuthProvider = ({ children }) => {
+export const AuthProvider = ({ children }) => {
 
-//   const [isLoggedIn, setIsLoggedIn] = useState(false);
-//   const [token, setToken] = useState(null); 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [token, setToken] = useState(null); 
+  const [name, setName] = useState(""); 
+  const [temp, setTemp] = useState(false); 
 
-//   // variables to keep track of the user and the user's profile
-//   const [user, setUser] = useState(null);
-//   const [newUser, setNewUser] = useState(null); 
-//   // might not need the whole profile - security purpose
-//   const [profile, setProfile] = useState(null);
-//   const [newProfile, setNewProfile] = useState(null); 
-//   const [name, updateName] = useState(null); 
+  /* Successfull log in, saving the name globally, redirect to main page */
+  const set = () => {
+    setIsLoggedIn(true); 
+    setTemp(true); 
+  };
 
-//   const login = useGoogleLogin ({
-//     onSuccess: (codeResponse) => setUser(codeResponse),
-//     onError: (error) => console.log('Login Failed:', error)
-//   });
+  /* Using temp variable to only redirect when after signing in */
+  useEffect(() => { 
+    if (window.location.pathname === "/request" && temp == true) {
+        setTemp(false); 
+        window.location.href = "/";  
+    }
+}, [isLoggedIn, temp]);
 
-//   const signup = useGoogleLogin ({
-//     onSuccess: (codeResponse) => setNewUser(codeResponse),
-//     onError: (error) => console.log('Login Failed:', error)
-//   }); 
 
-//   const set = () => {
-//     // Perform login logic here
-//     setIsLoggedIn(true); 
-//   };
+  /* Logout function */
+  const end = async () => {
+    // Call the doublecheck function
+    //await doublecheck(); 
+    // Clear the token from state or context
+    //setToken(null);
+    // Clear the local storage
+    localStorage.clear();
+    // Perform logout logic here
+    setIsLoggedIn(false);
+    //await doublecheck(); 
+  };
 
-//   // Corrected logout function
-//   const end = async () => {
-//     // Call the doublecheck function
-//     await doublecheck(); 
-//     // Clear the token from state or context
-//     setToken(null);
-//     // Clear the local storage
-//     localStorage.clear();
-//     // Perform logout logic here
-//     setIsLoggedIn(false);
-//     // Call the Google logout function
-//     await doublecheck(); 
-//     googleLogout();
-//   };
+  /* Doublecheck function */
+  const doublecheck = async () => {
+    console.log("Token:", token); 
+    console.log("Name:", localStorage.getItem('name')); 
+    console.log("Auth Token:", localStorage.getItem('authToken')); 
+    console.log("Is Logged In:", isLoggedIn); 
+  };
 
-//   // Corrected doublecheck function
-//   const doublecheck = async () => {
-//     console.log(token); 
-//     console.log(localStorage.getItem('name')); 
-//     console.log(localStorage.getItem('authToken')); 
-//     console.log(isLoggedIn); 
-//   };
+//   //successful log in 
+//   else {
+//     setToken(data); 
+//     updateName(profile.name); 
+//     setIsLoggedIn(true);
+//     window.location.href = "/"; 
+// }
 
-//   // Getting the user's profile
-//   useEffect(
-//   () => {
-//       if (user) {
-//         axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
-//             headers: {
-//                 Authorization: `Bearer ${user.access_token}`,
-//                 Accept: 'application/json'
-//             }
-//         })
-//         .then((res) => {
-//             setProfile(res.data);
-//             console.log(res.data);
-//         })
-//         .catch((err) => console.log(err));
-//       }
-//   },[user]);
-
-//   useEffect(() => {
-//     if (profile) {
-//         verifyExistingUser(profile.email)
-//     }
-//   }, [profile]);
-
-//   // sending user's email to server to verify
-//   const verifyExistingUser = async (email) => {
-//       console.log("The email is " + email);
-//       const response = await fetch('http://localhost:4131/verify', {
-//           method: 'POST',
-//           headers: {
-//               'Content-Type': 'application/json'
-//           },
-//           body: JSON.stringify({
-//               email: email
-//           })
-//       }); 
-//       const data = await response.text(); 
-//       console.log(data);
-      
-//       if (data === "not verified"){
-//           alert("Please create an account first by signing up");
-//       }
-//       //successful log in 
-//       else {
-//           setToken(data); 
-//           updateName(profile.name); 
-//           setIsLoggedIn(true);
-//           window.location.href = "/"; 
-//       }
-//   }; 
-
-//   // Getting the new user's profile
-//   useEffect(
-//   () => {
-//       if (newUser) {
-//         axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${newUser.access_token}`, {
-//             headers: {
-//                 Authorization: `Bearer ${newUser.access_token}`,
-//                 Accept: 'application/json'
-//             }
-//         })
-//         .then((res) => {
-//             setNewProfile(res.data);
-//             console.log(res.data);
-//         })
-//         .catch((err) => console.log(err));
-//       }
-//   },[newUser]);
-
-//   useEffect(() => {
-//     if (newProfile) {
-//         createNewUser(newProfile.given_name, newProfile.email)
-//     }
-//   }, [newProfile]);
-
-//   // sending user's email to server to verify
-//   const createNewUser = async (name, email) => {
-//     console.log("The email is " + email);
-//     const response = await fetch('http://localhost:4131/signup', {
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify({
-//             name: name, 
-//             email: email
-//         })
-//     }); 
-//     const data = await response.text(); 
-//     console.log(data);
-    
-//     if (data === "error creating"){
-//         alert("Error! Please try creating the account later");
-//     }
-//     //successful log in 
-//     else {
-//         setToken(data); 
-//         updateName(profile.name); 
-//         setIsLoggedIn(true);
-//         window.location.href = "/"; 
-//     }
-//   }; 
-
-//   // after recieving token, hence, verified, save token, name and email to maintain if page reloads 
+  // after recieving token, hence, verified, save token, name and email to maintain if page reloads 
 //   useEffect(() => {
 //     if (token) {
 //         localStorage.setItem('authToken', token);
@@ -175,11 +70,11 @@
 //   }, [token]);
   
 
-//   return (
-//     <AuthContext.Provider value={{ isLoggedIn, token, name, signup, login, set, end}}>
-//       {children}
-//     </AuthContext.Provider>
-//   );
-// };
+  return (
+    <AuthContext.Provider value={{ isLoggedIn, token, name, set, end}}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
-// export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => useContext(AuthContext);

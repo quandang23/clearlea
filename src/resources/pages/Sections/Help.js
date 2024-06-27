@@ -1,8 +1,19 @@
 import '../../css/help.css';
 import lawnIcon from '../../images/lawnMowingIcon.jpg'
 import React, { useState, useEffect } from 'react';
+import { useAuth } from '../Api/AuthContext';
 
 const Help = () => {
+
+    const { name, set, end } = useAuth();
+
+    useEffect(() => {
+        const temp = localStorage.getItem('name'); 
+        if (temp) {
+            set(); 
+        }
+    }, []);
+
     // Define an array of objects containing questions and answers for each dropdown
     const dropdownData = [
         {
@@ -38,17 +49,6 @@ const Help = () => {
             [dropdownId]: !prevState[dropdownId] // Toggle the state of the dropdown with id dropdownId
         }));
     }
-
-    // variable to keep track of log in state 
-    // const {isLoggedIn, token, name, signup, login, set, end} = useAuth();
-
-    // useEffect(() => {
-    //     const authToken = localStorage.getItem('authToken');
-    //     if (authToken) {
-    //         // Set isLoggedIn to true if token is present
-    //         set();
-    //     }
-    // }, []);
 
     return (
         <div>

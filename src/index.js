@@ -3,16 +3,16 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// import { AuthProvider } from './resources/pages/Api/AuthContext';
+import { AuthProvider } from './resources/pages/Api/AuthContext';
 import { ReqProvider } from './resources/pages/Api/ReqContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <ReqProvider>
+    <AuthProvider>
       <React.StrictMode>
         <App />
       </React.StrictMode>
-    </ReqProvider>
+    </AuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

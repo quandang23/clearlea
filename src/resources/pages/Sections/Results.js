@@ -1,13 +1,13 @@
 import '../../css/results.css';
 import React, { useState, useEffect } from 'react';
 // import { useAuth } from '../Api/AuthContext.js';
-import { useReq } from '../Api/ReqContext.js';
+// import { useReq } from '../Api/ReqContext.js';
 
 const Results = () => {
 
     // variable to keep track of log in state 
     // const { updateAddress, updateService, updateZipcode, address, service, zipcode } = useReq(); 
-    // const { isLoggedIn, token, name, signup, login, set, end } = useAuth();
+    // const { set, end } = useAuth();
 
     const [data, setData] = useState(""); 
     const [loading, setLoading] = useState(true);
@@ -73,6 +73,7 @@ const Results = () => {
                             </section>
                         </div>
                     </div> 
+                    
                 </section>
             </div>
         </div>
