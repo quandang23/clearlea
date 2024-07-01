@@ -12,17 +12,7 @@ export const AuthProvider = ({ children }) => {
   /* Successfull log in, saving the name globally, redirect to main page */
   const set = () => {
     setIsLoggedIn(true); 
-    setTemp(true); 
   };
-
-  /* Using temp variable to only redirect when after signing in */
-  useEffect(() => { 
-    if (window.location.pathname === "/request" && temp == true) {
-        setTemp(false); 
-        window.location.href = "/";  
-    }
-}, [isLoggedIn, temp]);
-
 
   /* Logout function */
   const end = async () => {

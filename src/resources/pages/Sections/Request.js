@@ -22,12 +22,13 @@ const Request = () => {
 
     const saveName = async () => {
         const nameTemp = localStorage.getItem('name');
-        console.log(nameTemp); 
+        // console.log(nameTemp); 
         if (nameTemp == null) {
             try {
                 const userAttributes = await fetchUserAttributes();
                 localStorage.setItem('name', userAttributes.name);
                 set(); 
+                window.location.href = "/"; 
                 //console.log('Email: ', userAttributes);
             } catch (e) {
                 console.log(e);
