@@ -3,11 +3,9 @@ import React, { useEffect } from 'react';
 import { Amplify } from 'aws-amplify'; 
 import { Authenticator } from '@aws-amplify/ui-react'; 
 import '@aws-amplify/ui-react/styles.css'; 
-
+import { useAuth } from '../Api/AuthContext.js';
 import awsExports from '../../../aws-exports';
 Amplify.configure(awsExports);
-
-import { useAuth } from '../Api/AuthContext.js';
 
 const Signup = () => {
 
