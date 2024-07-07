@@ -9,6 +9,7 @@ import Signup from "./Signup.js";
 import NoPage from "./404.js";
 import Careers from "./Careers"
 import Results from "./Results"
+import Login from "./Login.js"
 import { useAuth } from "../Api/AuthContext.js";
 
 const Navbar = () => {
@@ -89,7 +90,7 @@ const Navbar = () => {
                 />
                 <Route
                     path="/login"
-                    element={<Request />}
+                    element={<Login />}
                 />
                 <Route
                     path="/signup"
